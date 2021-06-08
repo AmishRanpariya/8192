@@ -102,42 +102,46 @@ function App() {
 	);
 
 	const handleSwipe = (e) => {
-		let T = [];
-		switch (e.dir) {
-			case "Up":
-				//left//compress//right
-				T = rotateLeft(tiles);
-				T = compress(T, setScore);
-				T = rotateRight(T);
-				T = addRandomTile(T);
-				setTiles(T);
-				break;
-			case "Down":
-				//right//compress//left
-				T = rotateRight(tiles);
-				T = compress(T, setScore);
-				T = rotateLeft(T);
-				T = addRandomTile(T);
-				setTiles(T);
-				break;
-			case "Right":
-				//right //right//compress//left //left
-				T = rotateRight(tiles);
-				T = rotateRight(T);
-				T = compress(T, setScore);
-				T = rotateLeft(T);
-				T = rotateLeft(T);
-				T = addRandomTile(T);
-				setTiles(T);
-				break;
-			case "Left":
-				//compress
-				T = compress(tiles, setScore);
-				T = addRandomTile(T);
-				setTiles(T);
-				break;
-			default:
-				break;
+		if (checkGameOver(tiles)) {
+			setIsGameOver(true);
+		} else {
+			let T = [];
+			switch (e.dir) {
+				case "Up":
+					//left//compress//right
+					T = rotateLeft(tiles);
+					T = compress(T, setScore);
+					T = rotateRight(T);
+					T = addRandomTile(T);
+					setTiles(T);
+					break;
+				case "Down":
+					//right//compress//left
+					T = rotateRight(tiles);
+					T = compress(T, setScore);
+					T = rotateLeft(T);
+					T = addRandomTile(T);
+					setTiles(T);
+					break;
+				case "Right":
+					//right //right//compress//left //left
+					T = rotateRight(tiles);
+					T = rotateRight(T);
+					T = compress(T, setScore);
+					T = rotateLeft(T);
+					T = rotateLeft(T);
+					T = addRandomTile(T);
+					setTiles(T);
+					break;
+				case "Left":
+					//compress
+					T = compress(tiles, setScore);
+					T = addRandomTile(T);
+					setTiles(T);
+					break;
+				default:
+					break;
+			}
 		}
 	};
 
