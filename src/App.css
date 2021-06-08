@@ -69,4 +69,14 @@ html {
 	background-color: #8f7a66;
 	font-weight: 600;
 	color: #ffd5e5;
+	display: flex;
+	justify-content: space-between;
+}
+
+.score div {
+	display: inline-block;
+}
+.score .small {
+	font-size: 0.7em;
+	opacity: 0.7;
 }

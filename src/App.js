@@ -3,7 +3,7 @@ import { useSwipeable } from "react-swipeable";
 import "./App.css";
 import TileGrid from "./components/TileGrid";
 
-const SIZE = 8;
+const SIZE = 4;
 const rotateLeft = (tiles) => {
 	const newTiles = [];
 	for (let i = 0; i < SIZE; i++) {
@@ -97,6 +97,9 @@ function App() {
 	});
 	const [isGameOver, setIsGameOver] = useState(false);
 	const [score, setScore] = useState(0);
+	const [bestScore, setBestScore] = useState(
+		localStorage.getItem("8192BEST") || 0
+	);
 
 	const handleSwipe = (e) => {
 		let T = [];
@@ -201,11 +204,36 @@ function App() {
 		};
 	}, [tiles]);
 
+	const handleReplay = () => {
+		setTiles(() => {
+			return addRandomTile(addRandomTile(new Array(SIZE * SIZE).fill(0)));
+		});
+		if (score > bestScore) {
+			setBestScore(score);
+			localStorage.setItem("8192BEST", score);
+		}
+		setScore(0);
+		setIsGameOver(false);
+	};
+
 	return (
 		<div className="App" {...handlers}>
 			<TileGrid tiles={tiles} size={SIZE} />
-			<div className="score">{score}</div>
-			{isGameOver && <div className="gameover">GAME OVER</div>}
+			<div className="score">
+				<div>
+					<span className="small">Score: </span>
+					{score}
+				</div>
+				<div>
+					<span className="small">Best: </span>
+					{bestScore}
+				</div>
+			</div>
+			{isGameOver && (
+				<div className="gameover" onClick={handleReplay}>
+					GAME OVER
+				</div>
+			)}
 		</div>
 	);
 }
