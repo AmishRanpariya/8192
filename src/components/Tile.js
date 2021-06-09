@@ -138,7 +138,7 @@ const Tile = ({ val, id }) => {
 	}`;
 	return (
 		<div className={classname} id={id} style={getStyle(val)}>
-			{val}
+			{val ? val : null}
 		</div>
 	);
 };

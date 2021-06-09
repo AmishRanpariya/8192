@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+:root {
+	--font: 10vmin;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -17,8 +22,8 @@ html {
 	font-size: 5vmin;
 }
 .TileGrid {
-	width: 80vmin;
-	height: 80vmin;
+	width: 75vmin;
+	height: 75vmin;
 	background-color: #776e65;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -37,7 +42,8 @@ html {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 2rem;
+	font-size: var(--font);
+	line-height: 0;
 	color: #ffd5e5;
 	font-weight: 600;
 	-webkit-touch-callout: none;
@@ -63,8 +69,8 @@ html {
 }
 .score {
 	padding: 0.05rem 0.6rem;
-	width: 80vmin;
-	font-size: 1rem;
+	width: 75vmin;
+	font-size: 30px;
 	border-radius: 0.5rem;
 	background-color: #8f7a66;
 	font-weight: 600;
@@ -79,4 +85,37 @@ html {
 .score .small {
 	font-size: 0.7em;
 	opacity: 0.7;
+}
+
+.btnWrapper {
+	padding: 0.05rem 0rem;
+	width: 75vmin;
+
+	/* font-size: 1rem; */
+	font-size: 30px;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 0.2rem;
+}
+.btnWrapper .btn,
+.btnWrapper .sizeDiv {
+	border-radius: 0.25rem;
+	background-color: #8f7a66;
+	color: #ffd5e5;
+	outline: none;
+	font-size: 1.5rem;
+	border: none;
+	height: 1.5rem;
+	width: 1.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* padding: 0rem 0.5rem; */
+}
+
+.btnWrapper .sizeDiv {
+	font-size: 1rem;
+	color: #ffd5e5;
 }
